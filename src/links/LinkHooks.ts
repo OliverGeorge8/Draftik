@@ -6,6 +6,7 @@ const useLink = () => {
   const getLink = () => {
     const selection = editorState.getSelection();
     let url = "";
+    
     if (!selection.isCollapsed()) {
       const contentState = editorState.getCurrentContent();
       const startKey = editorState.getSelection().getStartKey();

@@ -1,6 +1,6 @@
 import { EditorState } from "draft-js";
 import React, { useState } from "react";
-import { decorator } from "./links/utils";
+
 
 interface DraftContextProps {
   editorState: EditorState;
@@ -12,9 +12,7 @@ interface props {
   children?: any;
 }
 const Draft: React.FC<props> = ({ children }) => {
-  const [editorState, setEditorState] = useState(
-    EditorState.createEmpty(decorator)
-  );
+  const [editorState, setEditorState] = useState(EditorState.createEmpty());
   return (
     <DraftContext.Provider value={{ editorState, setEditorState }}>
       {children}

@@ -1,11 +1,29 @@
 import { EditorState, Modifier, RichUtils } from "draft-js";
 import { useDraftContext } from "../Context";
-/*
-const useColorStyle = () => {
+
+const alignStyles = {
+  "align-right": {
+    cls: "right",
+  },
+  "align-left": {
+    cls: "",
+  },
+  "align-center": {
+    cls: "",
+  },
+};
+const useAlignement = () => {
   const { editorState, setEditorState } = useDraftContext();
   const toggleColorStyle = (color: string) => {
-    const selection = editorState.getSelection();
-    const nextContentState = Object.keys(colorStyleMap).reduce(
+    editorState.getSelection().getStartKey();
+    const selection = editorState.getCurrentContent().getBlockForKey();
+    Modifier.mergeBlockData(editorState.getCurrentContent(),editorState.getSelection(),Immutable.Map({}))
+    EditorState.push(
+      editorState,
+      editorStat,
+      "change-block-data"
+    );
+    const nextContentState = Object.keys(alignStyles).reduce(
       (contentState, color) => {
         return Modifier.removeInlineStyle(contentState, selection, color);
       },
@@ -38,5 +56,4 @@ const useColorStyle = () => {
   return toggleColorStyle;
 };
 
-export default useColorStyle;
-*/
+export default useAlignement;
